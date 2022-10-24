@@ -7,6 +7,9 @@
 
 curl -sSL https://raw.githubusercontent.com/urbancompasspony/bashrc/main/.bashrc > $HOME/.bashrc
 
-. .bashrc
+echo "Agora sim entre como Sudo!"
+
+sudo rm /root/.bashrc
+curl -sSL https://raw.githubusercontent.com/urbancompasspony/bashrc/main/root/.bashrc | sudo tee -a /root/.bashrc
 
 echo "Novo bashrc instalado!"
