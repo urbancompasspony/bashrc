@@ -16,6 +16,45 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+#===========================================
+# Váriavies com as Cores
+#===========================================
+NONE="\[\033[0m\]" # Eliminar as Cores (deixar padrão)
+
+## Cores de Fonte
+K="\[\033[0;30m\]" # Black (Preto)
+R="\[\033[0;31m\]" # Red (Vermelho)
+G="\[\033[0;32m\]" # Green (Verde)
+Y="\[\033[0;33m\]" # Yellow (Amarelo)
+B="\[\033[0;34m\]" # Blue (Azul)
+M="\[\033[0;35m\]" # Magenta (Vermelho Claro)
+C="\[\033[0;36m\]" # Cyan (Ciano - Azul Claro)
+W="\[\033[0;37m\]" # White (Branco)
+
+## Efeito Negrito (bold) e cores
+BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
+BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
+BG="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
+BY="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
+BB="\[\033[1;34m\]" # Bold+Blue (Negrito+Azul)
+BM="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
+BC="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
+BW="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
+
+## Cores de fundo (backgroud)
+BGK="\[\033[40m\]" # Black (Preto)
+BGR="\[\033[41m\]" # Red (Vermelho)
+BGG="\[\033[42m\]" # Green (Verde)
+BGY="\[\033[43m\]" # Yellow (Amarelo)
+BGB="\[\033[44m\]" # Blue (Azul)
+BGM="\[\033[45m\]" # Magenta (Vermelho Claro)
+BGC="\[\033[46m\]" # Cyan (Ciano - Azul Claro)
+BGW="\[\033[47m\]" # White (Branco)
+
+#=============================================
+# Configurações referentes ao usuário
+#=============================================
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -33,10 +72,9 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+# Descomente para Terminal Colorido; Definido em desligado por padrão 
+# para não distrair o usuário; O foco é na janela de terminal, não no prompt.
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -50,10 +88,20 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+	PS1="$BK[$BR\u$BK][$BR\h$BK][$BR\w$BK]$BY# $NONE"
+
+	#PS1="$BK BK $BR BR $BG BG $BY BY $BB BB $BM BM $BC BC $BW BW"
+
+	#PS1="┌─[$BR\u$NONE][$BR\h$NONE][$BR\w$NONE]\n└─╼ "
+
+	#BKP PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
