@@ -10,4 +10,4 @@ curl -sSL https://raw.githubusercontent.com/urbancompasspony/bashrc/main/.bashrc
 sudo rm /root/.bashrc
 curl -sSL https://raw.githubusercontent.com/urbancompasspony/bashrc/main/root/.bashrc | sudo tee -a /root/.bashrc
 
-echo "Novo bashrc instalado!"
+echo "Novo bashrc instalado para os usuários $USER e ROOT!"
