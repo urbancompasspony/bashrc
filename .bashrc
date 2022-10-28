@@ -216,7 +216,7 @@ alias ps='ps auxf'
 #alias ping='ping -c 10'
 alias less='less -R'
 
-alias ls='ls -ah --color=always' # add colors and hidden files
+#alias ls='ls -ah --color=always' # add colors and hidden files
 
 # Search
 alias h="history | grep "
