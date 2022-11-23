@@ -241,6 +241,7 @@ alias ugz='tar -xvzf'
 alias TRIM='sudo fstrim -va'
 alias flush-dns='sudo /home/nathandrake/.configuracoes/Scripts/FlushDNS'
 alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
+alias domain='docker exec -it dominio bash'
 alias menussh='/home/nathandrake/.configuracoes/ssh'
 alias menuvpn='/home/nathandrake/.configuracoes/vpn'
 
