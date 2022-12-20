@@ -249,6 +249,9 @@ alias menuvpn='/home/nathandrake/.configuracoes/vpn'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias myiplan="hostname -I | awk '{print $1}'"
+alias myipwan="dig @resolver4.opendns.com myip.opendns.com +short"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
