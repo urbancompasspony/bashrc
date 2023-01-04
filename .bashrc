@@ -252,6 +252,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias iplan="hostname -I | awk '{print $1}'"
 alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
+alias ytdl="yt-dlp"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
