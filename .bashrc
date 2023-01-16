@@ -254,7 +254,8 @@ alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
 alias ytdl="yt-dlp"
 
-alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/nathandrake/Música/ && echo 'Cópia bem-sucedida!' || echo 'Erro ao salvar musicas.' "
+alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Música/ && echo 'Cópia bem-sucedida!' || echo 'Erro ao salvar musicas.' "
+alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
 
 #######################################################
 # SPECIAL FUNCTIONS
