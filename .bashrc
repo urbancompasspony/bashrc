@@ -258,6 +258,8 @@ alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Músic
 alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
 alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
+alias chatgpt="/home/$USER/.configuracoes/Scripts/chatgpt"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
