@@ -261,6 +261,9 @@ alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Músic
 alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
 alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
+# for ubuntu mate 22.04
+alias reset-panel="mate-panel --replace &"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
