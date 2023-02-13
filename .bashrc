@@ -264,6 +264,10 @@ alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 # for ubuntu mate 22.04
 alias reset-panel="mate-panel --replace &"
 
+# for Raspberry Pi
+alias sensorspi="sudo /usr/bin/vcgencmd measure_temp"
+alias temppi="sudo /usr/bin/vcgencmd measure_temp"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
