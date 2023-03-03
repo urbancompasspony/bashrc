@@ -268,6 +268,8 @@ alias reset-panel="mate-panel --replace &"
 alias sensorspi="sudo /usr/bin/vcgencmd measure_temp"
 alias temppi="sudo /usr/bin/vcgencmd measure_temp"
 
+alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/apt/lists/*"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
