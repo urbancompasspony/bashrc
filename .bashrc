@@ -270,6 +270,9 @@ alias temppi="sudo /usr/bin/vcgencmd measure_temp"
 
 alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/apt/lists/*"
 
+alias dockerstop="docker stop $(docker ps -a -q)"
+alias dockerstart="docker start $(docker ps -a -q)"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
