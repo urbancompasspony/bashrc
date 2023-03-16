@@ -273,6 +273,8 @@ alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/a
 alias dockerstop="docker stop $(docker ps -a -q)"
 alias dockerstart="docker start $(docker ps -a -q)"
 
+alias 0x0="curl -F file=@- 0x0.st"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
