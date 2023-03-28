@@ -437,3 +437,15 @@ ver ()
 		fi
 	fi
 }
+
+# For Podman on External Special Media!
+
+[ -d /media/nathandrake/SDCard/DistroBox ] && {
+  export PATH=/media/nathandrake/SDCard/DistroBox/bin:$PATH
+  xhost +si:localuser:$USER
+  }
+
+[ -d /run/media/mmcblk0p1/DistroBox ] && {
+  export PATH=/run/media/mmcblk0p1/DistroBox/bin:$PATH
+  xhost +si:localuser:$USER
+  }
