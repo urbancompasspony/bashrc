@@ -244,7 +244,7 @@ alias ugz='tar -xvzf'
 alias TRIM='sudo fstrim -va'
 alias flush-dns='sudo /home/$USER/.configuracoes/Scripts/FlushDNS'
 alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
-alias domain='docker exec -it dominio bash'
+
 alias menussh='/home/$USER/.configuracoes/ssh'
 alias menuvpn='/home/$USER/.configuracoes/vpn'
 
@@ -270,14 +270,24 @@ alias temppi="sudo /usr/bin/vcgencmd measure_temp"
 
 alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/apt/lists/*"
 
-alias dockerstop="docker stop $(docker ps -a -q)"
-alias dockerstart="docker start $(docker ps -a -q)"
-
 alias 0x0="curl -F file=@- 0x0.st"
+
+# Docker Aliases
+[ -d /etc/docker ] && {
+  alias dockerstop="docker stop $(docker ps -a -q)"
+  alias dockerstart="docker start $(docker ps -a -q)"
+  alias domain='docker exec -it dominio bash'
+}
 
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
+
+# Podman Special
+[ -d /usr/libexec/podman ] && {
+  export PATH=$HOME/.local/Distrobox/bin:$PATH
+  xhost +si:localuser:$USER 1> /dev/null
+}
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
@@ -437,8 +447,4 @@ ver ()
 		fi
 	fi
 }
-
-# For Podman on External Special Media!
-export PATH=$HOME/.local/Distrobox/bin:$PATH
-xhost +si:localuser:$USER 1> /dev/null
 
