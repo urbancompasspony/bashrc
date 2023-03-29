@@ -248,8 +248,8 @@ alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
 alias menussh='/home/$USER/.configuracoes/ssh'
 alias menuvpn='/home/$USER/.configuracoes/vpn'
 # For Termux
-alias tmenussh='/home/.configuracoes/VPN/ssh'
-alias tmenuvpn='/home/.configuracoes/VPN/vpn'
+alias tmenussh='.configuracoes/VPN/ssh'
+alias tmenuvpn='.configuracoes/VPN/vpn'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
