@@ -283,8 +283,8 @@ alias 0x0="curl -F file=@- 0x0.st"
 # SPECIAL FUNCTIONS
 #######################################################
 
-# Podman Special
-[ -d /usr/libexec/podman ] && {
+# Podman Special - If Ubuntu-based or Arch-based
+[ -d $HOME/.local/Distrobox ] && {
   export PATH=$HOME/.local/Distrobox/bin:$PATH
   xhost +si:localuser:$USER 1> /dev/null
 }
