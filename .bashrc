@@ -242,11 +242,11 @@ alias ubz2='tar -xvjf'
 alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
-alias flush-dns='sudo /home/nathandrake/.configuracoes/Scripts/FlushDNS'
+alias flush-dns='sudo /home/$USER/.configuracoes/Scripts/FlushDNS'
 alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
 alias domain='docker exec -it dominio bash'
-alias menussh='/home/nathandrake/.configuracoes/ssh'
-alias menuvpn='/home/nathandrake/.configuracoes/vpn'
+alias menussh='/home/$USER/.configuracoes/ssh'
+alias menuvpn='/home/$USER/.configuracoes/vpn'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -439,17 +439,6 @@ ver ()
 }
 
 # For Podman on External Special Media!
-
-[ -d /run/media/mmcblk0p1/DistroBox ] && {
-  export PATH=/run/media/mmcblk0p1/DistroBox/bin:$PATH
-  xhost +si:localuser:$USER
-  }
-  
-[ -d /media/nathandrake/SDCard/DistroBox ] && {
-  export PATH=/media/nathandrake/SDCard/DistroBox/bin:$PATH
-  xhost +si:localuser:$USER
-  } || {
-  export PATH=/media/nathandrake/45b88afc-2926-4feb-ac9b-15e321a06bcb/DistroBox/bin:$PATH
-  xhost +si:localuser:$USER
-  }
+export PATH=$HOME/.local/Distrobox/bin:$PATH
+xhost +si:localuser:$USER 1> /dev/null
 
