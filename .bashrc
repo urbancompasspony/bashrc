@@ -76,7 +76,7 @@ if ! shopt -oq posix; then
 fi
 
 #========================
-# Cores para o Terminal
+# Colors for Terminal
 #========================
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -116,8 +116,7 @@ BGM="\[\033[45m\]" # Magenta (Vermelho Claro)
 BGC="\[\033[46m\]" # Cyan (Ciano - Azul Claro)
 BGW="\[\033[47m\]" # White (Branco)
 
-# Descomente para Terminal Colorido; Definido em desligado por padrão 
-# para não distrair o usuário; O foco é na janela de terminal, não no prompt.
+# Uncomment to turn on!
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -133,6 +132,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 
+# The code itself. Edit here!
 PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
 
 #PS1="$BK┌─$BK[$BR\u$BK]$BR@$BK[$BR\h$BK]$BR:$BK[$BR\w$BK] $BK \n└──╼ $BR$ $NONE"
@@ -152,16 +152,16 @@ PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
 
 #PS1='[\u@\h \W]\$ '
 
-else
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-	
-fi
-
 # BKP PS1="┌─[\[\e[34m\]\u\[\e[0m\]][\[\e[34m\]\h\[\e[0m\]][\[\e[34m\]\w\[\e[0m\]]\n└─╼ "
 
 # COR: \[\e[34m\]
 
 #PS1="$G┌─[$BR\u$G]$BY@$G[$BW${HOSTNAME%%.*}$G]$B:\w\n$G└──>$BR \\$ $NONE"
+
+else
+	# Default terminal colors/scheme.
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
 
 unset color_prompt force_color_prompt
 
@@ -226,10 +226,6 @@ alias h="history | grep "
 alias p="ps aux | grep "
 alias f="find . | grep "
 
-#alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | sort | uniq -c | sort -n | sed -e 's/^ *//' -e 's/ *\$//'"
-#alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
-alias da='date "+%Y-%m-%d %A %T %Z"'
-
 # Alias's for archives
 alias mktar='tar -cvf'
 alias mkbz2='tar -cvjf'
@@ -242,27 +238,21 @@ alias ubz2='tar -xvjf'
 alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
-alias flush-dns='sudo /home/$USER/.configuracoes/Scripts/FlushDNS'
 alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
 
 alias menussh='/home/$USER/.configuracoes/ssh'
 alias menuvpn='/home/$USER/.configuracoes/vpn'
-# For Termux
-alias tmenussh='.configuracoes/VPN/ssh'
-alias tmenuvpn='.configuracoes/VPN/vpn'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Check my IP over LAN and WAN
 alias iplan="hostname -I | awk '{print $1}'"
 alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
+# Youtube downloader
 alias ytdl="yt-dlp"
-
-alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Música/ && echo 'Cópia bem-sucedida!' || echo 'Erro ao salvar musicas.' "
-alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
-alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
 # for ubuntu mate 22.04
 alias reset-panel="mate-panel --replace &"
@@ -274,6 +264,11 @@ alias temppi="sudo /usr/bin/vcgencmd measure_temp"
 alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/apt/lists/*"
 
 alias 0x0="curl -F file=@- 0x0.st"
+
+# Custom aliases
+alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Música/ && echo 'Cópia bem-sucedida!' || echo 'Erro ao salvar musicas.' "
+alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
+alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
 # Docker Aliases
 [ -d /etc/docker ] && {
