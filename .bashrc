@@ -277,6 +277,9 @@ alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
   alias domain='docker exec -it dominio bash'
 }
 
+# For ArchLinux
+alias autoremove="sudo pacman -R $(pacman -Qdtq)"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
