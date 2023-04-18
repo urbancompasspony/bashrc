@@ -242,6 +242,7 @@ alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
 
 alias menussh='/home/$USER/.configuracoes/ssh'
 alias menuvpn='/home/$USER/.configuracoes/vpn'
+alias main='/home/$USER/.config/MENUCLI/menu'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
