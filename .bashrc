@@ -215,16 +215,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -iv'
 alias mkdir='mkdir -p'
-alias ps='ps auxf'
 #alias ping='ping -c 10'
 alias less='less -R'
 
 #alias ls='ls -ah --color=always' # add colors and hidden files
-
-# Search
-alias h="history | grep "
-alias p="ps aux | grep "
-alias f="find . | grep "
 
 # Alias's for archives
 alias mktar='tar -cvf'
@@ -242,7 +236,6 @@ alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
 
 alias menussh='/home/$USER/.configuracoes/ssh'
 alias menuvpn='/home/$USER/.configuracoes/vpn'
-alias main='/home/$USER/.config/MENUCLI/menu'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -252,22 +245,17 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias iplan="hostname -I | awk '{print $1}'"
 alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
-# Youtube downloader
-alias ytdl="yt-dlp"
-
-# for ubuntu mate 22.04
+# for MATE DE
 alias reset-panel="mate-panel --replace &"
 
 # for Raspberry Pi
 alias sensorspi="sudo /usr/bin/vcgencmd measure_temp"
 alias temppi="sudo /usr/bin/vcgencmd measure_temp"
 
-alias clearcache="sudo apt autoclean && sudo apt clean && sudo rm -rf /var/lib/apt/lists/*"
-
+# To pastebin
 alias 0x0="curl -F file=@- 0x0.st"
 
 # Custom aliases
-alias syncmusic="rsync -va --delete /mnt/particular/Músicas/ /home/$USER/Música/ && echo 'Cópia bem-sucedida!' || echo 'Erro ao salvar musicas.' "
 alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
 alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
@@ -286,10 +274,10 @@ alias autoremove="sudo pacman -R $(pacman -Qdtq)"
 #######################################################
 
 # Podman Special - If Ubuntu-based or Arch-based
-[ -d $HOME/.local/Distrobox ] && {
-  export PATH=$HOME/.local/Distrobox/bin:$PATH
-  xhost +si:localuser:$USER 1> /dev/null
-}
+#[ -d $HOME/.local/Distrobox ] && {
+#  export PATH=$HOME/.local/Distrobox/bin:$PATH
+#  xhost +si:localuser:$USER 1> /dev/null
+#}
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
@@ -375,78 +363,3 @@ mkdirg ()
 	mkdir -p $1
 	cd $1
 }
-
-# Show the current distribution
-distribution ()
-{
-	local dtype
-	# Assume unknown
-	dtype="unknown"
-	
-	# First test against Fedora / RHEL / CentOS / generic Redhat derivative
-	if [ -r /etc/rc.d/init.d/functions ]; then
-		source /etc/rc.d/init.d/functions
-		[ zz`type -t passed 2>/dev/null` == "zzfunction" ] && dtype="redhat"
-	
-	# Then test against SUSE (must be after Redhat,
-	# I've seen rc.status on Ubuntu I think? TODO: Recheck that)
-	elif [ -r /etc/rc.status ]; then
-		source /etc/rc.status
-		[ zz`type -t rc_reset 2>/dev/null` == "zzfunction" ] && dtype="suse"
-	
-	# Then test against Debian, Ubuntu and friends
-	elif [ -r /lib/lsb/init-functions ]; then
-		source /lib/lsb/init-functions
-		[ zz`type -t log_begin_msg 2>/dev/null` == "zzfunction" ] && dtype="debian"
-	
-	# Then test against Gentoo
-	elif [ -r /etc/init.d/functions.sh ]; then
-		source /etc/init.d/functions.sh
-		[ zz`type -t ebegin 2>/dev/null` == "zzfunction" ] && dtype="gentoo"
-	
-	# For Mandriva we currently just test if /etc/mandriva-release exists
-	# and isn't empty (TODO: Find a better way :)
-	elif [ -s /etc/mandriva-release ]; then
-		dtype="mandriva"
-
-	# For Slackware we currently just test if /etc/slackware-version exists
-	elif [ -s /etc/slackware-version ]; then
-		dtype="slackware"
-
-	fi
-	echo $dtype
-}
-
-# Show the current version of the operating system
-ver ()
-{
-	local dtype
-	dtype=$(distribution)
-
-	if [ $dtype == "redhat" ]; then
-		if [ -s /etc/redhat-release ]; then
-			cat /etc/redhat-release && uname -a
-		else
-			cat /etc/issue && uname -a
-		fi
-	elif [ $dtype == "suse" ]; then
-		cat /etc/SuSE-release
-	elif [ $dtype == "debian" ]; then
-		lsb_release -a
-		# sudo cat /etc/issue && sudo cat /etc/issue.net && sudo cat /etc/lsb_release && sudo cat /etc/os-release # Linux Mint option 2
-	elif [ $dtype == "gentoo" ]; then
-		cat /etc/gentoo-release
-	elif [ $dtype == "mandriva" ]; then
-		cat /etc/mandriva-release
-	elif [ $dtype == "slackware" ]; then
-		cat /etc/slackware-version
-	else
-		if [ -s /etc/issue ]; then
-			cat /etc/issue
-		else
-			echo "Error: Unknown distribution"
-			exit 1
-		fi
-	fi
-}
-
