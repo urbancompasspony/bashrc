@@ -269,6 +269,9 @@ alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 # For ArchLinux
 alias autoremove="echo 'sudo pacman -R \$(pacman -Qdtq)'"
 
+# For metasploit
+alias msfconsole="sudo msfconsole"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
