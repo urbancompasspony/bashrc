@@ -271,7 +271,7 @@ alias autoremove="sudo pacman -R \$(pacman -Qdtq)"
 
 # For Pentesting
 alias msfconsole="sudo msfconsole"
-alias singlenmap='sudo nmap -Pn --script vuln --exclude 9100 -p1-9099,9101-65535 "$1"'
+alias singlenmap='sudo nmap -Pn --script vuln --exclude 9100 -p1-9099,9101-65535'
 
 # Generate QR Code!
 alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
