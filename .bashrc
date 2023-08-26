@@ -276,6 +276,9 @@ alias singlenmap='sudo nmap -Pn --script vuln --exclude 9100 -p1-9099,9101-65535
 # Generate QR Code!
 alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 
+# Remove SSH Entry
+alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
+
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
