@@ -263,7 +263,7 @@ alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 [ -d /etc/docker ] && {
   alias dockerstop="docker stop $(docker ps -a -q)"
   alias dockerstart="docker start $(docker ps -a -q)"
-  alias domain='docker exec -it dominio bash'
+  #alias domain='docker exec -it dominio bash'
 }
 
 # For ArchLinux
@@ -278,6 +278,40 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 
 # Remove SSH Entry
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
+
+##################
+# DOMAIN CONTROL #
+##################
+
+hash1="c7372ae920d9576200e78f0ab25b437d"
+
+function domain {
+password=$(dialog --backtitle "Server Manager $version" --title " " --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
+hash0=$(echo "$password" | md5sum | awk '{print $1}')
+hash1="c7372ae920d9576200e78f0ab25b437d"
+hash1="51da913e7b04c1b70543dc263ecc5106"
+hash1="c357311ed3a47a08b423e1b42ec5c130"
+
+  [ -z "$password" ] && {
+    dialog --title "ERROR" --msgbox "É necessário digitar uma senha para continuar." 6 40
+    clear
+  } || {
+    [ "$hash0" = "$hash1" ] && {
+      docker ps -a | grep dominio 1> /dev/null && {
+      docker exec -it dominio bash
+      } || {
+      echo "Nenhum dominio encontrado!"
+      }
+    } || {
+      echo $hash1
+      dialog --title "ERROR" --msgbox "Senha incorreta. \nTente novamente!" 6 30
+      timeout=$((timeout+1)); sleep $timeout
+      domain
+    }
+  }
+}
+
+hash1="51da913e7b04c1b70543dc263ecc5106"
 
 #######################################################
 # SPECIAL FUNCTIONS
