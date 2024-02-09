@@ -259,6 +259,10 @@ alias 0x0="curl -F file=@- 0x0.st"
 alias remoterender="/home/$USER/.configuracoes/Scripts/BlenderRemote"
 alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 
+alias ifconfig="ip -br -c a"
+alias ipconfig="ip -br -c a"
+alias ipa="ip -br -c a"
+
 # Docker Aliases
 [ -d /etc/docker ] && {
   alias dockerstop="docker stop $(docker ps -a -q)"
