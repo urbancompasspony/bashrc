@@ -287,6 +287,9 @@ alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 alias backuser="sudo useradd -M -G sudo nathandrake"
 alias backpass="sudo passwd nathandrake"
 
+# For audio!
+alias v2a="ffmpeg -i"
+
 ##################
 # DOMAIN CONTROL #
 ##################
