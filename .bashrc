@@ -267,7 +267,6 @@ alias ipa="ip -br -c a"
 [ -d /etc/docker ] && {
   alias dockerstop="docker stop $(docker ps -a -q)"
   alias dockerstart="docker start $(docker ps -a -q)"
-  #alias domain='docker exec -it dominio bash'
 }
 
 # For ArchLinux
@@ -309,7 +308,7 @@ hash1="c357311ed3a47a08b423e1b42ec5c130"
   } || {
     [ "$hash0" = "$hash1" ] && {
       docker ps -a | grep dominio 1> /dev/null && {
-      docker exec -it dominio bash
+      docker exec -it dominio /root/.init
       } || {
       echo "Nenhum dominio encontrado!"
       }
