@@ -132,30 +132,23 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 
-# The code itself. Edit here!
-PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
+# Color based if is root or not. Same for all users!
 
+if [ `whoami` != 'root' ]; then
+  PS1="$BR┌──╼ {$BY\u$BR}$BR @ $BR{$BY\h$BR}$BR : $BR{$BY\w$BR}\n$BR└╼ $BY$ $NONE"
+else
+  PS1="$BR┌──╼ {$BR\u$BR}$BR @ $BR{$BR\h$BR}$BR : $BR{$BR\w$BR}\n$BR└╼ $BY$ $NONE"
+fi
+
+# BKP OLD ONES
+
+#PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
 #PS1="$BK┌─$BK[$BR\u$BK]$BR@$BK[$BR\h$BK]$BR:$BK[$BR\w$BK] $BK \n└──╼ $BR$ $NONE"
-
-#BK="\[\033[1;30m\]" # Bold+Black (Negrito+Preto)
-#BR="\[\033[1;31m\]" # Bold+Red (Negrito+Vermelho)
-#BG="\[\033[1;32m\]" # Bold+Green (Negrito+Verde)
-#BY="\[\033[1;33m\]" # Bold+Yellow (Negrito+Amarelo)
-#BB="\[\033[1;34m\]" # Bold+Blue (Negrito+Azul)
-#BM="\[\033[1;35m\]" # Bold+Magenta (Negrito+Vermelho Claro)
-#BC="\[\033[1;36m\]" # Bold+Cyan (Negrito+Ciano - Azul Claro)
-#BW="\[\033[1;37m\]" # Bold+White (Negrito+Branco)
-
 #PS1="$BR┌─[$BG\u$BR]$BY@$BR[$BW${HOSTNAME%%.*}$BR]$B:\w\n$BR└──>$BG Ω $NONE"
-
 #PS1="\e[01;31m┌─[\e[01;35m\u\e[01;31m]──[\e[00;37m${HOSTNAME%%.*}\e[01;32m]:\w$\e[01;31m\n\e[01;31m└──\e[01;36m>>\e[00m"
-
 #PS1='[\u@\h \W]\$ '
-
-# BKP PS1="┌─[\[\e[34m\]\u\[\e[0m\]][\[\e[34m\]\h\[\e[0m\]][\[\e[34m\]\w\[\e[0m\]]\n└─╼ "
-
+#PS1="┌─[\[\e[34m\]\u\[\e[0m\]][\[\e[34m\]\h\[\e[0m\]][\[\e[34m\]\w\[\e[0m\]]\n└─╼ "
 # COR: \[\e[34m\]
-
 #PS1="$G┌─[$BR\u$G]$BY@$G[$BW${HOSTNAME%%.*}$G]$B:\w\n$G└──>$BR \\$ $NONE"
 
 else
