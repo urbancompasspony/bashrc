@@ -135,7 +135,7 @@ if [ "$color_prompt" = yes ]; then
 # Color based if is root or not. Same for all users!
 
 if [ `whoami` != 'root' ]; then
-  PS1="$BR┌──╼ {$BY\u$BR}$BR @ $BR{$BY\h$BR}$BR : $BR{$BY\w$BR}\n$BR└╼ $BY$ $NONE"
+  PS1="$BG┌──╼ [$BY\u$BG]$BR@$BG[$BY\h$BG]$BR:$BG[$BY\w$BG]\n│ \n$BG└╼ $BY$ $NONE"
 else
   PS1="$BR┌──╼ {$BR\u$BR}$BR @ $BR{$BR\h$BR}$BR : $BR{$BR\w$BR}\n$BR└╼ $BY$ $NONE"
 fi
