@@ -263,7 +263,7 @@ alias ipa="ip -br -c a"
 }
 
 # For ArchLinux
-alias autoremove="sudo pacman -R \$(pacman -Qdtq)"
+alias autoremove="sudo pacman -R \$(pacman -Qdtq); sudo pacman -Scc"
 
 # For Pentesting
 alias msfconsole="sudo msfconsole"
