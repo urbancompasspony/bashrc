@@ -137,17 +137,20 @@ if [ "$color_prompt" = yes ]; then
 if [ `whoami` != 'root' ]; then
   PS1="$BK┌─$BK[$BG\u$BK]$BR@$BK[$BG\h$BK]$BR:$BK[$BG\w$BK] $BK \n$BK└──╼ $BR$ $NONE"
 else
-  PS1="$BK┌─$BK[$BR\u$BK]$BR@$BK[$BR\h$BK]$BR:$BK[$BR\w$BK] $BK \n└──╼ $BR$ $NONE"
+  PS1="$BK┌─$BK[$BR\u$BK]$BR@$BK[$BR\h$BK]$BR:$BK[$BR\w$BK] $BK \n$BK└──╼ $BR$ $NONE"
 fi
 
 # BKP OLD ONES
 
-PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
+#PS1="$BG┌─[$BC\u$BG]$BR@$BG[$BB\h$BG]:$BG[$BY\w$BG] \n└──╼ $ $NONE"
 #PS1="$BK┌─$BK[$BR\u$BK]$BR@$BK[$BR\h$BK]$BR:$BK[$BR\w$BK] $BK \n└──╼ $BR$ $NONE"
 #PS1="$BR┌─[$BG\u$BR]$BY@$BR[$BW${HOSTNAME%%.*}$BR]$B:\w\n$BR└──>$BG Ω $NONE"
 #PS1="\e[01;31m┌─[\e[01;35m\u\e[01;31m]──[\e[00;37m${HOSTNAME%%.*}\e[01;32m]:\w$\e[01;31m\n\e[01;31m└──\e[01;36m>>\e[00m"
 #PS1="┌─[\[\e[34m\]\u\[\e[0m\]][\[\e[34m\]\h\[\e[0m\]][\[\e[34m\]\w\[\e[0m\]]\n└─╼ "
 #PS1="$G┌─[$BR\u$G]$BY@$G[$BW${HOSTNAME%%.*}$G]$B:\w\n$G└──>$BR \\$ $NONE"
+
+# Default
+#PS1='[\u@\h \W]\$ '
 
 else
 	# Default terminal colors/scheme.
