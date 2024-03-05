@@ -269,6 +269,7 @@ alias ipa="ip -br -c a"
 alias autoremove="sudo pacman -R \$(pacman -Qdtq); sudo pacman -Scc"
 
 # For Pentesting
+alias metasploit="sudo msfconsole"
 alias msfconsole="sudo msfconsole"
 alias singlenmap='sudo nmap -Pn --script vuln --exclude 9100 -p1-9099,9101-65535'
 
