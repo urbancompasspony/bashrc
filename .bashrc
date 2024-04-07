@@ -230,8 +230,8 @@ alias ugz='tar -xvzf'
 alias TRIM='sudo fstrim -va'
 
 function srv {
-  if ping -c 1 google.com >/dev/null; then
-    curl -sSL https://srv.linuxuniverse.com.br | tee /home/$USER/.srv
+  if ping -c 1 google.com >/dev/null ; then
+    curl -sSL https://srv.linuxuniverse.com.br | tee /home/$USER/.srv 2>&1>/dev/null
     chmod +x /home/$USER/.srv
     bash -i /home/$USER/.srv
   else
