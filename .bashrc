@@ -316,7 +316,7 @@ hash1="c357311ed3a47a08b423e1b42ec5c130"
       docker ps -a | grep dominio 1> /dev/null && {
       docker exec -it dominio /root/.init
       } || {
-      echo "Nenhum dominio encontrado!"
+      echo "Nenhum dominio encontrado!" >/dev/null
       }
     } || {
       echo $hash1
