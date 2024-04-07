@@ -228,7 +228,16 @@ alias ubz2='tar -xvjf'
 alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
-alias srv='curl -sSL https://srv.linuxuniverse.com.br | bash'
+
+function srv {
+  if ping -c 1 google.com >/dev/null; then
+    curl -sSL https://srv.linuxuniverse.com.br | tee /home/$USER/.srv
+    chmod +x /home/$USER/.srv
+    bash -i /home/$USER/.srv
+  else
+    bash -i /home/$USER/.srv
+  fi
+}
 
 alias menussh='/home/$USER/.menussh'
 alias menuvpn='/home/$USER/.menuvpn'
