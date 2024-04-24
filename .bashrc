@@ -232,11 +232,10 @@ alias TRIM='sudo fstrim -va'
 function srv {
   if ping -c 1 google.com >/dev/null ; then
     wget -q https://srv.linuxuniverse.com.br -O /home/$USER/.srv
-    #curl -sSL https://srv.linuxuniverse.com.br | tee /home/$USER/.srv 1>&2 >/dev/null
     chmod +x /home/$USER/.srv
-    bash -i /home/$USER/.srv
+    bash /home/$USER/.srv
   else
-    bash -i /home/$USER/.srv
+    bash /home/$USER/.srv
   fi
 }
 
