@@ -252,6 +252,7 @@ alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
 # for MATE DE
 alias reset-panel="mate-panel --replace &"
+alias rankmirrors="sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist; yay -Syyu; sudo eos-rankmirrors --verbose; yay -Syyu"
 
 # for Raspberry Pi
 alias sensorspi="sudo /usr/bin/vcgencmd measure_temp"
