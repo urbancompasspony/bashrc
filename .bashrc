@@ -241,6 +241,7 @@ function srv {
 
 alias menussh='/home/$USER/.menussh'
 alias menuvpn='/home/$USER/.menuvpn'
+alias menuvpn='/home/$USER/.menutail'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
