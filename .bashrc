@@ -294,7 +294,8 @@ alias backpass="sudo passwd nathandrake"
 alias v2a="ffmpeg -i"
 
 # To check sync status
-alias sync="terminator -e 'watch echo $(grep -i dirty /proc/meminfo)'; sync"
+alias sync="echo 'Inicial $(grep -i dirty /proc/meminfo)'; echo 'Para ver em tempo real: syncs' && sync && echo 'Final $(grep -i dirty /proc/meminfo)'"
+alias syncs="watch echo $(grep -i dirty /proc/meminfo)"
 
 ##################
 # DOMAIN CONTROL #
