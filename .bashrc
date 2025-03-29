@@ -253,6 +253,8 @@ alias ipwan="dig @resolver4.opendns.com myip.opendns.com +short"
 
 # for MATE DE
 alias reset-panel="mate-panel --replace &"
+
+# For EnOS
 alias rankmirror="sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist; yay -Syyu; sudo eos-rankmirrors --verbose; yay -Syyu"
 
 # for Raspberry Pi
@@ -269,12 +271,6 @@ alias winetricksupdate="/home/$USER/.configuracoes/Scripts/winetricksu"
 alias ifconfig="ip -br -c a"
 alias ipconfig="ip -br -c a"
 alias ipa="ip -br -c a"
-
-# Docker Aliases
-[ -d /etc/docker ] && {
-  alias dockerstop="docker stop $(docker ps -a -q)"
-  alias dockerstart="docker start $(docker ps -a -q)"
-}
 
 # For ArchLinux
 alias autoremove="sudo pacman -R \$(pacman -Qdtq); yay -Scc"
@@ -296,6 +292,9 @@ alias backpass="sudo passwd nathandrake"
 
 # For audio!
 alias v2a="ffmpeg -i"
+
+# To check sync status
+alias sync="terminator -e 'watch echo $(grep -i dirty /proc/meminfo)'; sync"
 
 ##################
 # DOMAIN CONTROL #
