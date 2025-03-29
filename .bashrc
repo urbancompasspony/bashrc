@@ -336,8 +336,10 @@ hash1="51da913e7b04c1b70543dc263ecc5106"
 #######################################################
 
 # lz4:
-alias tarc="tar -I 'lz4 -1 -c -' -cpf"
-alias tarx="tar -I 'lz4 -d -c -' -xf"
+#alias tarc="tar -I 'lz4 -1 -c -' -cpf"
+alias tarc="tar -I 'lz4 -1 -c -v -' --totals -cpf"
+#alias tarx="tar -I 'lz4 -d -c -' -xf"
+alias tarc="tar -I 'lz4 -1 -c -v -' --totals -cpf"
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
