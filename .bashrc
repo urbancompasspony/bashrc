@@ -335,11 +335,9 @@ hash1="51da913e7b04c1b70543dc263ecc5106"
 # SPECIAL FUNCTIONS
 #######################################################
 
-# Podman Special - If Ubuntu-based or Arch-based
-#[ -d $HOME/.local/Distrobox ] && {
-#  export PATH=$HOME/.local/Distrobox/bin:$PATH
-#  xhost +si:localuser:$USER 1> /dev/null
-#}
+# lz4:
+alias tarc="tar -I 'lz4 -1 -c -' -cpf"
+alias tarx="tar -I 'lz4 -d -c -' -xf"
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
