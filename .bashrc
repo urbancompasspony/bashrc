@@ -229,6 +229,8 @@ alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
 
+alias df='duf'
+
 function srv {
   if ping -c 1 google.com >/dev/null ; then
     wget -q https://srv.linuxuniverse.com.br -O /home/$USER/.srv
