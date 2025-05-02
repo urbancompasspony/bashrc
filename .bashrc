@@ -229,7 +229,7 @@ alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
 
-alias df='duf'
+#alias df='duf'
 
 function srv {
   if ping -c 1 google.com >/dev/null ; then
