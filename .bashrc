@@ -299,6 +299,11 @@ alias v2a="ffmpeg -i"
 alias sync="echo 'Inicial $(grep -i dirty /proc/meminfo)'; echo 'Para ver em tempo real: syncs' && sync && echo 'Final $(grep -i dirty /proc/meminfo)'"
 alias syncs="watch echo $(grep -i dirty /proc/meminfo)"
 
+# Append ROCm!
+[ -d /opt/rocm ] && {
+  export PATH=$PATH:/opt/rocm/bin
+}
+
 ##################
 # DOMAIN CONTROL #
 ##################
