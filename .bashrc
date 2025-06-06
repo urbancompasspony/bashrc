@@ -319,8 +319,9 @@ alias syncs="watch echo $(grep -i dirty /proc/meminfo)"
 hash1="c7372ae920d9576200e78f0ab25b437d"
 
 function domain {
-password=$(dialog --backtitle "Server Manager $version" --title " " --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
+password=$(dialog --backtitle "Active Directory and Domain Control" --title "" --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
 hash0=$(echo "$password" | md5sum | awk '{print $1}')
+
 hash1="c7372ae920d9576200e78f0ab25b437d"
 hash1="51da913e7b04c1b70543dc263ecc5106"
 hash1="c357311ed3a47a08b423e1b42ec5c130"
@@ -333,10 +334,11 @@ hash1="c357311ed3a47a08b423e1b42ec5c130"
       docker ps -a | grep dominio 1> /dev/null && {
       docker exec -it dominio /root/.init
       } || {
-      echo "Nenhum dominio encontrado!" >/dev/null
+        clear
+        echo "Nenhum Dominio encontrado neste servidor!"
+        sleep 2
       }
     } || {
-      echo $hash1
       dialog --title "ERROR" --msgbox "Senha incorreta. \nTente novamente!" 6 30
       timeout=$((timeout+1)); sleep $timeout
       domain
@@ -351,10 +353,8 @@ hash1="51da913e7b04c1b70543dc263ecc5106"
 #######################################################
 
 # lz4:
-#alias tarc="tar -I 'lz4 -1 -c -' -cpf"
 alias tarc="tar -I 'lz4 -1 -c -v -' --totals -cpf"
-#alias tarx="tar -I 'lz4 -d -c -' -xf"
-alias tarc="tar -I 'lz4 -1 -c -v -' --totals -cpf"
+alias tarx="tar -I 'lz4 -d -c -' -xf"
 
 # Extracts any archive(s) (if unp isn't installed)
 extract () {
