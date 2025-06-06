@@ -322,26 +322,20 @@ function domain {
 password=$(dialog --backtitle "Active Directory and Domain Control" --title "" --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
 hash0=$(echo "$password" | md5sum | awk '{print $1}')
 
-hash1="c7372ae920d9576200e78f0ab25b437d"
-hash1="51da913e7b04c1b70543dc263ecc5106"
-hash1="c357311ed3a47a08b423e1b42ec5c130"
+hash1="c7372ae920d9576200e78f0ab25b437d"; hash1="51da913e7b04c1b70543dc263ecc5106"; hash1="c357311ed3a47a08b423e1b42ec5c130"
 
   [ -z "$password" ] && {
-    dialog --title "ERROR" --msgbox "É necessário digitar uma senha para continuar." 6 40
-    clear
+    dialog --title "ERROR" --msgbox "É necessário digitar uma senha para continuar." 6 40; clear
   } || {
     [ "$hash0" = "$hash1" ] && {
       docker ps -a | grep dominio 1> /dev/null && {
       docker exec -it dominio /root/.init
       } || {
-        clear
-        echo "Nenhum Dominio encontrado neste servidor!"
-        sleep 2
+        clear; echo "Nenhum Dominio encontrado neste servidor!"; sleep 2
       }
     } || {
       dialog --title "ERROR" --msgbox "Senha incorreta. \nTente novamente!" 6 30
-      timeout=$((timeout+1)); sleep $timeout
-      domain
+      timeout=$((timeout+1)); sleep $timeout; domain
     }
   }
 }
