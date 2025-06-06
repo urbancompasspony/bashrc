@@ -232,12 +232,20 @@ alias TRIM='sudo fstrim -va'
 #alias df='duf'
 
 function srv {
-  if ping -c 1 google.com >/dev/null ; then
-    wget -q https://srv.linuxuniverse.com.br -O /home/$USER/.srv
-    chmod +x /home/$USER/.srv
-    bash /home/$USER/.srv
+  SCRIPT="$HOME/.srv"
+  URL="https://srv.linuxuniverse.com.br"
+  if ping -c 1 -W 2 google.com &>/dev/null; then
+    if wget -q "$URL" -O "$SCRIPT" && [ -s "$SCRIPT" ]; then
+      chmod +x "$SCRIPT"
+      bash "$SCRIPT"
+    else
+      echo "Falha ao baixar o comando srv mais recente. Usando versão local (se disponivel)."
+    fi
+  fi
+  if [ -x "$SCRIPT" ]; then
+    bash "$SCRIPT"
   else
-    bash /home/$USER/.srv
+    echo "Comando srv não encontrado ou não é executável!"
   fi
 }
 
