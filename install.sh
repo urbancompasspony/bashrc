@@ -42,9 +42,8 @@ echo "Atualização do SRV para ROOT concluída."
 rm -f "$TMP_BASHRC"
 
 # 6. Fecha o terminal apenas se foi atualizado
-echo -e "\nNovo bashrc instalado para os usuários $USER e ROOT em /home e em /etc!"
-echo "O terminal será fechado para aplicar as mudanças."
+echo -e "\nNovo bashrc instalado!"
 sleep 1
 
 # Fecha o terminal (funciona para bash, zsh, gnome-terminal, xfce4-terminal, etc.)
-kill -9 $PPID
+#kill -9 $PPID
