@@ -304,9 +304,22 @@ alias backpass="sudo passwd nathandrake"
 alias v2a="ffmpeg -i"
 
 sync() {
-    echo "Inicial $(grep -i dirty /proc/meminfo)"
-    echo "Para ver em tempo real: syncs"
-    command sync
+    echo "Executando sync e monitorando..."
+    
+    # Executa sync em background
+    command sync &
+    SYNC_PID=$!
+    
+    # Loop de monitoramento
+    while kill -0 $SYNC_PID 2>/dev/null; do
+        clear
+        echo "Sync em andamento..."
+        echo "$(grep -i dirty /proc/meminfo)"
+        sleep 0.5
+    done
+    
+    clear
+    echo "Sync concluído!"
     echo "Final $(grep -i dirty /proc/meminfo)"
 }
 
