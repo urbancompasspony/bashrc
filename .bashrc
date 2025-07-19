@@ -229,7 +229,7 @@ alias ugz='tar -xvzf'
 
 alias TRIM='sudo fstrim -va'
 
-#alias df='duf'
+alias lsblk='lsblk -f'
 
 function srv {
   SCRIPT="$HOME/.srv"
