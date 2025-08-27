@@ -230,6 +230,7 @@ alias ugz='tar -xvzf'
 alias TRIM='sudo fstrim -va'
 
 alias lsblk='lsblk -f'
+alias rsync='rsync -aHAXv'
 
 function srv {
   SCRIPT="$HOME/.srv"
