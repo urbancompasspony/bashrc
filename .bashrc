@@ -297,9 +297,8 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 # Remove SSH Entry
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
-# For backdoors
-alias backuser="sudo useradd -M -G sudo nathandrake"
-alias backpass="sudo passwd nathandrake"
+# Tunnels
+alias tunnelssh='wget https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh -O /tmp/tunnels ; bash /tmp/tunnels'
 
 # For audio!
 alias v2a="ffmpeg -i"
