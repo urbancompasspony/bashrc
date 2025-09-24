@@ -298,7 +298,7 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
 # Tunnels
-alias tunnelssh='curl -sSL https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh | tee /tmp/tunnels ; bash /tmp/tunnels'
+alias tunnelssh='curl -sSL https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh | tee /tmp/tunnels>/dev/null ; bash /tmp/tunnels'
 
 # For audio!
 alias v2a="ffmpeg -i"
