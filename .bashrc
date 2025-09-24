@@ -236,7 +236,7 @@ function srv {
   SCRIPT="$HOME/.srv"
   URL="https://srv.linuxuniverse.com.br"
   if ping -c 1 -W 2 google.com &>/dev/null; then
-    if wget -q "$URL" -O "$SCRIPT" && [ -s "$SCRIPT" ]; then
+    if curl -sSL "$URL" -o "$SCRIPT" && [ -s "$SCRIPT" ]; then
       chmod +x "$SCRIPT"
     else
       echo "Falha ao baixar o comando srv mais recente. Usando versão local (se disponivel)."
@@ -298,7 +298,7 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
 # Tunnels
-alias tunnelssh='wget https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh -O /tmp/tunnels ; bash /tmp/tunnels'
+alias tunnelssh='curl -sSL https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh | tee /tmp/tunnels ; bash /tmp/tunnels'
 
 # For audio!
 alias v2a="ffmpeg -i"
