@@ -230,7 +230,13 @@ alias ugz='tar -xvzf'
 alias TRIM='sudo fstrim -va'
 
 alias lsblk='lsblk -f'
-alias rsync='rsync -aHAXv'
+alias rsyncf='rsync -aHAXv --numeric-ids --sparse'
+
+function dockermount() {
+  docker ps -q | xargs docker inspect --format '{{.Name}}{{range .Mounts}}
+  {{.Source}} -> {{.Destination}}{{end}}
+' | grep -E "$1|^/"
+}
 
 function srv {
   SCRIPT="$HOME/.srv"
