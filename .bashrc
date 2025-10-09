@@ -308,6 +308,7 @@ alias tunnelssh='curl -sSL https://raw.githubusercontent.com/urbancompasspony/se
 
 # For audio!
 alias v2a="ffmpeg -i"
+alias yt-dlpa="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o '%(title)s.%(ext)s'"
 
 sync() {
     echo "Executando sync e monitorando..."
