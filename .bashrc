@@ -341,7 +341,7 @@ ping() {
     done
 }
 
-diagnosticar() {
+diagnostic() {
   URLAQUI="https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/Diagnostics/install.sh"
     if ! curl -fsSL --connect-timeout 5 $URLAQUI -o "/tmp/TMP_BASHRC"; then
       echo "Erro: Sem conexão com a internet ou URL inacessível."
