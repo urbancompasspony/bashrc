@@ -363,6 +363,10 @@ hash1="c7372ae920d9576200e78f0ab25b437d"; hash1="51da913e7b04c1b70543dc263ecc510
   } || {
     [ "$hash0" = "$hash1" ] && {
       docker ps -a | grep dominio 1> /dev/null && {
+      if [ -z "$DOM_UPDATE_CHECKED" ]; then
+        export DOM_UPDATE_CHECKED=1
+        curl -sSL https://raw.githubusercontent.com/urbancompasspony/docker/refs/heads/main/rsat-webui-samba/auto-upgrade_yaml_based.sh | sudo bash
+      fi
       docker exec -it dominio /root/.init
       } || {
         clear; echo "Nenhum Dominio encontrado neste servidor!"; sleep 2
