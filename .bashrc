@@ -334,16 +334,16 @@ syncs() {
     watch 'echo $(grep -i dirty /proc/meminfo)'
 }
 
-# Append ROCm!
-[ -d /opt/rocm ] && {
-  export PATH=$PATH:/opt/rocm/bin
-}
-
 # SuperPing!
 ping() {
     command ping -D "$@" | while read line; do 
         echo "$(date '+%H:%M:%S') - $line"
     done
+}
+
+# Append ROCm!
+[ -d /opt/rocm ] && {
+  export PATH=$PATH:/opt/rocm/bin
 }
 
 ##################
