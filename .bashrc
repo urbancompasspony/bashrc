@@ -339,6 +339,13 @@ syncs() {
   export PATH=$PATH:/opt/rocm/bin
 }
 
+# SuperPing!
+ping() {
+    command ping -D "$@" | while read line; do 
+        echo "$(date '+%H:%M:%S') - $line"
+    done
+}
+
 ##################
 # DOMAIN CONTROL #
 ##################
