@@ -341,6 +341,21 @@ ping() {
     done
 }
 
+diagnosticar() {
+  URLAQUI="https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/Diagnostics/install.sh"
+    if ! curl -fsSL --connect-timeout 5 $URLAQUI -o "/tmp/TMP_BASHRC"; then
+      echo "Erro: Sem conexão com a internet ou URL inacessível."
+      rm -f "/tmp/TMP_BASHRC"
+    else
+      if [ -z "$DIAG_UPDATE_CHECKED" ]; then
+        export DIAG_UPDATE_CHECKED=1
+        curl -sSL $URLAQUI | sudo bash
+      fi
+    fi
+  clear
+  sudo bash /usr/local/bin/diagnostic-system.sh
+}
+
 # Append ROCm!
 [ -d /opt/rocm ] && {
   export PATH=$PATH:/opt/rocm/bin
@@ -363,19 +378,17 @@ hash1="c7372ae920d9576200e78f0ab25b437d"; hash1="51da913e7b04c1b70543dc263ecc510
   } || {
     [ "$hash0" = "$hash1" ] && {
       docker ps -a | grep dominio 1> /dev/null && {
-
-      URLAQUI="https://raw.githubusercontent.com/urbancompasspony/docker/refs/heads/main/rsat-webui-samba/auto-upgrade_yaml_based.sh"
-      if ! curl -fsSL --connect-timeout 5 "$URLAQUI" -o "$TMP_BASHRC"; then
-        echo "Erro: Sem conexão com a internet ou URL inacessível."
-        rm -f "$TMP_BASHRC"
-      else
-        if [ -z "$DOM_UPDATE_CHECKED" ]; then
-          export DOM_UPDATE_CHECKED=1
-          curl -sSL $URLAQUI | sudo bash
+        URLAQUI="https://raw.githubusercontent.com/urbancompasspony/docker/refs/heads/main/rsat-webui-samba/auto-upgrade_yaml_based.sh"
+        if ! curl -fsSL --connect-timeout 5 $URLAQUI -o "/tmp/TMP_BASHRC"; then
+          echo "Erro: Sem conexão com a internet ou URL inacessível."
+          rm -f "/tmp/TMP_BASHRC"
+        else
+          if [ -z "$DOM_UPDATE_CHECKED" ]; then
+            export DOM_UPDATE_CHECKED=1
+            curl -sSL $URLAQUI | sudo bash
+          fi
         fi
-      fi
-
-      docker exec -it dominio /root/.init
+        docker exec -it dominio /root/.init
 
       } || {
         clear; echo "Nenhum Dominio encontrado neste servidor!"; sleep 2
