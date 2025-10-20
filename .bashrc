@@ -266,6 +266,12 @@ if [ $(uname --machine) = "x86_64" ]; then
   alias menutail='/home/$USER/.menutail'
 fi
 
+if [ $(uname --machine) = "aarch64" ]; then
+  alias menussh='/data/data/com.termux/files/home/.local/menussh'
+  alias menuvpn='/data/data/com.termux/files/home/.local/menuvpn'
+  alias menutail='/data/data/com.termux/files/home/.local/menutail'
+fi
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
