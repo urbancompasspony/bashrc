@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+if [ $(uname --machine) = "aarch64" ]; then
+  USER="/data/data/com.termux/files/home/"
+fi
+
 #-----------------------------------------------
 # Configurações Gerais
 #-----------------------------------------------
@@ -256,9 +260,17 @@ function srv {
   fi
 }
 
-alias menussh='/home/$USER/.menussh'
-alias menuvpn='/home/$USER/.menuvpn'
-alias menutail='/home/$USER/.menutail'
+if [ $(uname --machine) = "aarch64" ]; then
+  alias menussh='/data/data/com.termux/files/home/.menussh'
+  alias menuvpn='/data/data/com.termux/files/home/.menuvpn'
+  alias menutail='/data/data/com.termux/files/home/.menutail'
+fi
+
+if [ $(uname --machine) = "x86_64" ]; then
+  alias menussh='/home/$USER/.menussh'
+  alias menuvpn='/home/$USER/.menuvpn'
+  alias menutail='/home/$USER/.menutail'
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
