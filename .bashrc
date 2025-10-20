@@ -260,12 +260,6 @@ function srv {
   fi
 }
 
-if [ $(uname --machine) = "aarch64" ]; then
-  alias menussh='/data/data/com.termux/files/home/.menussh'
-  alias menuvpn='/data/data/com.termux/files/home/.menuvpn'
-  alias menutail='/data/data/com.termux/files/home/.menutail'
-fi
-
 if [ $(uname --machine) = "x86_64" ]; then
   alias menussh='/home/$USER/.menussh'
   alias menuvpn='/home/$USER/.menuvpn'
