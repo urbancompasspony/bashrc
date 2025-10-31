@@ -6,6 +6,8 @@ if [ $(uname --machine) = "aarch64" ]; then
   USER="/data/data/com.termux/files/home/"
 fi
 
+SOURCEUSER="896d3eb785103dc7b53c5079a64ef8fe"
+SOURCEPASS="ffa0f690f712e7c5f8bbd520ad3055d2"
 serverip="172.20.0.13"
 lanhost="http://$serverip"
 wanhost="http://z.net-freaks.com:1313"
@@ -322,7 +324,7 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
 # Tunnels
-alias tunnelssh='curl -u "896d3eb785103dc7b53c5079a64ef8fe:ffa0f690f712e7c5f8bbd520ad3055d2" "http://172.20.0.13/server/tunnel_ssh" | tee /tmp/tunnels>/dev/null ; bash /tmp/tunnels'
+alias tunnelssh='curl -u "$SOURCEUSER:$SOURCEPASS" "$webadress/server/tunnel_ssh" | tee /tmp/tunnels>/dev/null ; bash /tmp/tunnels'
 
 # For audio!
 alias v2a="ffmpeg -i"
@@ -360,16 +362,17 @@ ping() {
 }
 
 diagnostic() {
-  URLAQUI="https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/Diagnostics/install.sh"
-    if ! curl -fsSL --connect-timeout 5 $URLAQUI -o "/tmp/TMP_BASHRC"; then
-      echo "Erro: Sem conexão com a internet ou URL inacessível."
-      rm -f "/tmp/TMP_BASHRC"
-    else
-      if [ -z "$DIAG_UPDATE_CHECKED" ]; then
-        export DIAG_UPDATE_CHECKED=1
-        curl -sSL $URLAQUI | sudo bash
-      fi
+  URLAQUI="$webadress/server/Diagnostics/install.sh"
+  
+  if ! curl -u "$SOURCEUSER:$SOURCEPASS" -fsSL --connect-timeout 5 "$URLAQUI" | tee "/tmp/TMP_BASHRC" > /dev/null; then
+    echo "Erro: Sem conexão com a internet ou URL inacessível."
+    rm -f "/tmp/TMP_BASHRC"
+  else
+    if [ -z "$DIAG_UPDATE_CHECKED" ]; then
+      export DIAG_UPDATE_CHECKED=1
+      curl -u "$SOURCEUSER:$SOURCEPASS" -sSL "$URLAQUI" | sudo bash
     fi
+  fi
   clear
   sudo bash /usr/local/bin/diagnostic-system.sh
 }
@@ -386,28 +389,27 @@ diagnostic() {
 hash1="c7372ae920d9576200e78f0ab25b437d"
 
 function domain {
-password=$(dialog --backtitle "Active Directory and Domain Control" --title "" --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
-hash0=$(echo "$password" | md5sum | awk '{print $1}')
-
-hash1="c7372ae920d9576200e78f0ab25b437d"; hash1="51da913e7b04c1b70543dc263ecc5106"; hash1="c357311ed3a47a08b423e1b42ec5c130"
-
+  password=$(dialog --backtitle "Active Directory and Domain Control" --title "" --insecure --passwordbox "Digite a senha!" 0 0 2>&1 > /dev/tty)
+  hash0=$(echo "$password" | md5sum | awk '{print $1}')
+  hash1="c7372ae920d9576200e78f0ab25b437d"; hash1="51da913e7b04c1b70543dc263ecc5106"; hash1="c357311ed3a47a08b423e1b42ec5c130"
+  
   [ -z "$password" ] && {
     dialog --title "ERROR" --msgbox "É necessário digitar uma senha para continuar." 6 40; clear
   } || {
     [ "$hash0" = "$hash1" ] && {
       docker ps -a | grep dominio 1> /dev/null && {
-        URLAQUI="https://raw.githubusercontent.com/urbancompasspony/docker/refs/heads/main/rsat-webui-samba/auto-upgrade_yaml_based.sh"
-        if ! curl -fsSL --connect-timeout 5 $URLAQUI -o "/tmp/TMP_BASHRC"; then
+        URLAQUI="$webadress/docker/rsat-webui-samba/auto-upgrade_yaml_based.sh"
+        
+        if ! curl -u "$SOURCEUSER:$SOURCEPASS" -fsSL --connect-timeout 5 "$URLAQUI" -o "/tmp/TMP_BASHRC"; then
           echo "Erro: Sem conexão com a internet ou URL inacessível."
           rm -f "/tmp/TMP_BASHRC"
         else
           if [ -z "$DOM_UPDATE_CHECKED" ]; then
             export DOM_UPDATE_CHECKED=1
-            curl -sSL $URLAQUI | sudo bash
+            curl -u "$SOURCEUSER:$SOURCEPASS" -sSL "$URLAQUI" | sudo bash
           fi
         fi
         docker exec -it dominio /root/.init
-
       } || {
         clear; echo "Nenhum Dominio encontrado neste servidor!"; sleep 2
       }
