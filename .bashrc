@@ -6,9 +6,15 @@ if [ $(uname --machine) = "aarch64" ]; then
   USER="/data/data/com.termux/files/home/"
 fi
 
-#-----------------------------------------------
-# Configurações Gerais
-#-----------------------------------------------
+serverip="172.20.0.13"
+lanhost="http://$serverip"
+wanhost="http://z.net-freaks.com:1313"
+
+if ping -c 1 -W 1 $serverip >/dev/null; then
+  webadress="$lanhost"
+else
+  webadress="$wanhost"
+fi
 
 # Set the default editor
 export EDITOR=nano
@@ -316,7 +322,7 @@ alias qrcode='qrencode -m 2 -t utf8 <<< "$1"'
 alias sshw="ssh-keygen -f /home/$USER/.ssh/known_hosts -R"
 
 # Tunnels
-alias tunnelssh='curl -sSL https://raw.githubusercontent.com/urbancompasspony/server/refs/heads/main/tunnel_ssh | tee /tmp/tunnels>/dev/null ; bash /tmp/tunnels'
+alias tunnelssh='curl -u "896d3eb785103dc7b53c5079a64ef8fe:ffa0f690f712e7c5f8bbd520ad3055d2" "http://172.20.0.13/server/tunnel_ssh" | tee /tmp/tunnels>/dev/null ; bash /tmp/tunnels'
 
 # For audio!
 alias v2a="ffmpeg -i"
