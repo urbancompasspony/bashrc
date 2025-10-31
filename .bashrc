@@ -252,15 +252,15 @@ function dockermount() {
 
 function srv {
   SCRIPT="$HOME/.srv"
-  URL="https://srv.linuxuniverse.com.br"
+  URL="$webadress/srv"
+  
   if ping -c 1 -W 2 google.com &>/dev/null; then
-    if curl -sSL "$URL" -o "$SCRIPT" && [ -s "$SCRIPT" ]; then
+    if curl -u "$SOURCEUSER:$SOURCEPASS" -sSL "$URL" -o "$SCRIPT" && [ -s "$SCRIPT" ]; then
       chmod +x "$SCRIPT"
     else
       echo "Falha ao baixar o comando srv mais recente. Usando versão local (se disponivel)."
     fi
   fi
-
   if [ -x "$SCRIPT" ]; then
     bash "$SCRIPT"
   else
